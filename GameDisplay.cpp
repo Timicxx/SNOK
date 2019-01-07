@@ -19,8 +19,9 @@ int GameDisplay::getSize() {
 	return this->SIZE;
 }
 
-LedControl GameDisplay::getLedControl() {
-	return this->ledControl;
+LedControl* GameDisplay::getLedControl() {
+	LedControl* lc = &this->ledControl;
+	return lc;
 }
 
 int GameDisplay::getAddress() {

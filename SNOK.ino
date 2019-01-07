@@ -1,17 +1,18 @@
-#include "test.h"
+#include "InputManager.h"
 #include "GameManager.h"
 #include "GameDisplay.h"
 #include "Player.h"
 
-
-GameDisplay gameDisplay(12, 11, 10, 8);
-Player player = Player(5, 0);
-GameManager gameManager = GameManager(&player, &gameDisplay);
+GameManager gameManager = GameManager();
 
 void setup() {
-	// Yes
+	gameManager.Setup();
 }
 
 void loop() {
-	gameManager.Play();
+	gameManager.isPlaying(true);
+	while (!gameManager.isPlaying()) {
+		gameManager.GetInputManager()->checkForInput();
+		gameManager.Draw();
+	}
 }
