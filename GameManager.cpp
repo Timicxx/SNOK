@@ -1,18 +1,36 @@
 #include "GameManager.h"
 
-GameManager::GameManager(Player* player, GameDisplay* gameDisplay) {
-	this->player = player;
-	this->gameDisplay = gameDisplay;
+GameManager::GameManager(int din, int clk, int cs, int intensity, int tail, int score, int* pos) 
+	: gameDisplay(din, clk, cs, intensity), player(tail, score, pos), inputManager(&this->player) {
 }
 
-void GameManager::Play() {
-	// Play loop
+void GameManager::Setup() {
+	this->m_isPlaying = false;
 }
 
-void GameManager::Draw(Player* player) {
-	int displayAddress = this->gameDisplay->getAddress();
-	int* playerPixelArray = player->getPixelArray();
-	for (size_t i = 0; i < 64; i++) {
-		this->gameDisplay->getLedControl().setLed(displayAddress, playerPixelArray[i], playerPixelArray[i + 1], true);
-	}
+void GameManager::Draw() {
+	int displayAddress = this->gameDisplay.getAddress();
+	this->gameDisplay.getLedControl()->clearDisplay(displayAddress);
+	unsigned int* position = this->player.getPosition();
+	this->gameDisplay.getLedControl()->setLed(displayAddress, position[0], position[1], true);
+}
+
+bool GameManager::isPlaying() {
+	return this->m_isPlaying;
+}
+
+void GameManager::isPlaying(bool state) {
+	this->m_isPlaying = state;
+}
+
+Player* GameManager::getPlayer() {
+	return &this->player;
+}
+
+GameDisplay* GameManager::getGameDisplay() {
+	return &this->gameDisplay;
+}
+
+InputManager* GameManager::GetInputManager() {
+	return &this->inputManager;
 }

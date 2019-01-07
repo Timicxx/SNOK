@@ -1,8 +1,12 @@
 #include "Player.h"
 
-Player::Player(int tail, int score) {
+Player::Player(int tail, int score, int* pos) {
 	this->tail = tail;
 	this->score = score;
+	this->position = new struct Position;
+	if (pos != nullptr) {
+		this->position->setPosition(pos[0], pos[1]);
+	}
 }
 
 int Player::getTail() {
@@ -21,11 +25,11 @@ void Player::setScore(int score) {
 	this->score = score;
 }
 
-int* Player::getPixelArray() {
-	return this->pixels;
+unsigned int* Player::getPosition() {
+	unsigned int pos[] = { this->position->X, this->position->Y };
+	return pos;
 }
 
-void Player::pushPixel(int x, int y) {
-	this->pixels[8 * x + y] = x;
-	this->pixels[8 * x + y + 1] = y;
+void Player::setPosition(int posX, int posY) {
+	this->position->setPosition(posX, posY);
 }
