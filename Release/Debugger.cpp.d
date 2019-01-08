@@ -1,6 +1,6 @@
-C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameDisplay.cpp.o: \
- C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameDisplay.cpp \
- C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameDisplay.h \
+C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\Debugger.cpp.o: \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\Debugger.cpp \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\Debugger.h \
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/arduino.h \
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/binary.h \
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/WCharacter.h \
@@ -12,5 +12,9 @@ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameDisplay.cpp.
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/USBAPI.h \
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h \
  C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\variants\standard/pins_arduino.h \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameManager.h \
  C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\LedControlMS.h \
- C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h
+ C:\Users\Tymek11rt\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.21\cores\arduino/Arduino.h \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\GameDisplay.h \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\Player.h \
+ C:\Users\Tymek11rt\AppData\Local\Temp\VMBuilds\SNOK\uno\Release\InputManager.h

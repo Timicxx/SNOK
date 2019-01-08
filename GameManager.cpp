@@ -1,11 +1,13 @@
 #include "GameManager.h"
 
-GameManager::GameManager(int din, int clk, int cs, int intensity, int tail, int score, int* pos) 
-	: gameDisplay(din, clk, cs, intensity), player(tail, score, pos), inputManager(&this->player) {
+GameManager::GameManager(int intensity, int* pos) 
+	: gameDisplay(intensity), player(pos), inputManager(&this->player) {
 }
 
 void GameManager::Setup() {
 	this->m_isPlaying = false;
+	Serial.begin(9600);
+	this->inputManager.Setup();
 }
 
 void GameManager::Draw() {
