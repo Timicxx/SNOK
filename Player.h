@@ -11,26 +11,31 @@
 
 class Player {
   public:
-	Player(int tail, int score, int* pos);
+	Player(int* pos);
     int getTail();
     void setTail(int tail);
     int getScore();
     void setScore(int score);
 	unsigned int* getPosition();
-	void setPosition(int posX, int posY);
+	void setPosition(unsigned int posX, unsigned int posY);
+	void incPosition(int incX, int incY);
   private:
-    int tail;
+    unsigned int tail;
     int score;
 	struct Position* position;
 };
 
 struct Position {
 public:
-	int X = 4;
-	int Y = 4;
-	void setPosition(int posX, int posY) {
+	unsigned int X = 4;
+	unsigned int Y = 4;
+	void setPosition(unsigned int posX, unsigned int posY) {
 		this->X = posX;
 		this->Y = posY;
+	}
+	void incPosition(int incX, int incY) {
+		this->X += incX;
+		this->Y += incY;
 	}
 };
 

@@ -1,7 +1,7 @@
 #include "GameDisplay.h"
 
-GameDisplay::GameDisplay(int din, int clk, int cs, int intensity)
-	: ledControl(din, clk, cs, intensity) {
+GameDisplay::GameDisplay(int intensity)
+	: ledControl(12, 11, 10, intensity) {
 	this->init(intensity);
 }
 
