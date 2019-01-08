@@ -14,7 +14,7 @@
 class Debugger {
   public:
 	Debugger(GameManager* gameManager);
-	debug();
+	void Debug();
   private:
 	GameManager* gameManager;
 };

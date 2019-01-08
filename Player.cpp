@@ -1,8 +1,8 @@
 #include "Player.h"
 
-Player::Player(int tail, int score, int* pos) {
-	this->tail = tail;
-	this->score = score;
+Player::Player(int* pos) {
+	this->tail = 0;
+	this->score = 0;
 	this->position = new struct Position;
 	if (pos != nullptr) {
 		this->position->setPosition(pos[0], pos[1]);
@@ -30,6 +30,10 @@ unsigned int* Player::getPosition() {
 	return pos;
 }
 
-void Player::setPosition(int posX, int posY) {
+void Player::setPosition(unsigned int posX, unsigned int posY) {
 	this->position->setPosition(posX, posY);
+}
+
+void Player::incPosition(int incX, int incY) {
+	this->position->incPosition(incX, incY);
 }

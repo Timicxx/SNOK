@@ -2,9 +2,11 @@
 
 Debugger::Debugger(GameManager* gameManager) {
 	this->gameManager = gameManager;
-	Serial.begin(9600);
 }
 
-void Debugger::debug() {
-	
+void Debugger::Debug() {
+	// Output player coordinates to serial console
+	unsigned int* playerPos = gameManager->getPlayer()->getPosition();
+	String output = "X: " + String(playerPos[0]) + " | " + "Y: " + String(playerPos[1]);
+	Serial.println(output);
 }
