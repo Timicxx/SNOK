@@ -16,20 +16,26 @@ class Player {
     void setTail(int tail);
     int getScore();
     void setScore(int score);
-	unsigned int* getPosition();
-	void setPosition(unsigned int posX, unsigned int posY);
+	void setSize(int size);
+	int getPositionX();
+	int getPositionY();
+	void setPosition(int posX, int posY);
 	void incPosition(int incX, int incY);
+	int* getCoordinates();
   private:
-    unsigned int tail;
+	int SIZE = 8;
+	void verifyPosition();
+	int* coordinates;
     int score;
+	int* pos;
 	struct Position* position;
 };
 
 struct Position {
 public:
-	unsigned int X = 4;
-	unsigned int Y = 4;
-	void setPosition(unsigned int posX, unsigned int posY) {
+	int X = 4;
+	int Y = 4;
+	void setPosition(int posX, int posY) {
 		this->X = posX;
 		this->Y = posY;
 	}
