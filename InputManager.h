@@ -13,7 +13,7 @@
 
 class InputManager {
 public:
-	InputManager(Player* player, int speed=1, int deadZone=0.5, int inputDelay=0.01, bool useSerialInput=false);
+	InputManager(Player* player, int speed=1, float deadZone=0.5, float inputDelay=300.0, bool useSerialInput=false);
 	void checkForInput();
 	void resetDelta();
 	void Setup();
@@ -22,7 +22,6 @@ private:
 	void checkSerialInput();
 	Player* player;
 	bool useSerialInput;
-	float currentTime;
 	float previousTime;
 	float deltaTime;
 	int speed;

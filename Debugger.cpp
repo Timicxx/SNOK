@@ -6,7 +6,8 @@ Debugger::Debugger(GameManager* gameManager) {
 
 void Debugger::Debug() {
 	// Output player coordinates to serial console
-	unsigned int* playerPos = gameManager->getPlayer()->getPosition();
-	String output = "X: " + String(playerPos[0]) + " | " + "Y: " + String(playerPos[1]);
+	int _X = gameManager->getPlayer()->getPositionX();
+	int _Y = gameManager->getPlayer()->getPositionY();
+	String output = "X: " + String(_X) + " | " + "Y: " + String(_Y);
 	Serial.println(output);
 }
