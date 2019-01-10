@@ -18,7 +18,7 @@ void setup() {
 
 void loop() {
 	gameManager.isPlaying(true);
-	while (!gameManager.isPlaying()) {
+	while (gameManager.isPlaying()) {
 		gameManager.GetInputManager()->checkForInput();
 		gameManager.Draw();
 		debugger.Debug();

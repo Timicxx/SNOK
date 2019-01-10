@@ -20,7 +20,7 @@ class GameDisplay {
 	  LedControl* getLedControl();
   private:
 	  const int DISPLAY_ADDR = 0;
-	  const int SIZE = 8;
+	  const int SIZE = 7;
 	  int intensity;
 	  LedControl ledControl;
 	  void init(int intensity);

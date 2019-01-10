@@ -6,15 +6,18 @@ GameManager::GameManager(int intensity, int* pos)
 
 void GameManager::Setup() {
 	this->m_isPlaying = false;
-	Serial.begin(9600);
 	this->inputManager.Setup();
+	this->player.setSize(this->gameDisplay.getSize());
+	Serial.begin(9600);
 }
 
 void GameManager::Draw() {
 	int displayAddress = this->gameDisplay.getAddress();
+	int _X = this->player.getPositionX();
+	int _Y = this->player.getPositionY();
+
 	this->gameDisplay.getLedControl()->clearDisplay(displayAddress);
-	unsigned int* position = this->player.getPosition();
-	this->gameDisplay.getLedControl()->setLed(displayAddress, position[0], position[1], true);
+	this->gameDisplay.getLedControl()->setLed(displayAddress, _X, _Y, true);
 }
 
 bool GameManager::isPlaying() {
