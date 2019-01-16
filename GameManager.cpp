@@ -13,11 +13,17 @@ void GameManager::Setup() {
 
 void GameManager::Draw() {
 	int displayAddress = this->gameDisplay.getAddress();
-	int _X = this->player.getPositionX();
-	int _Y = this->player.getPositionY();
-
+	// int _X = this->player.getPositionX();
+	// int _Y = this->player.getPositionY();
+	
+	int positionArray[this->player.getPositionArraySize()];
+	this->getPosition(positionArray);
+	
 	this->gameDisplay.getLedControl()->clearDisplay(displayAddress);
-	this->gameDisplay.getLedControl()->setLed(displayAddress, _X, _Y, true);
+	for(int i = 0; i < sizeof(positionArray) / sizeof(int); i += 2) {
+		this->gameDisplay.getLedControl()->setLed(displayAddress, positionArray[i], positionArray[i + 1], true);
+	}
+	// this->gameDisplay.getLedControl()->setLed(displayAddress, _X, _Y, true);
 }
 
 bool GameManager::isPlaying() {
