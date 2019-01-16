@@ -12,23 +12,25 @@
 class Player {
   public:
 	Player(int* pos);
-    int getTail();
-    void setTail(int tail);
     int getScore();
     void setScore(int score);
 	void setSize(int size);
-	int getPositionX();
-	int getPositionY();
+	// int getPositionX();
+	// int getPositionY();
+	int getPositionArraySize();
+	void getPosition(int* positionArray);
 	void setPosition(int posX, int posY);
 	void incPosition(int incX, int incY);
-	int* getCoordinates();
+	char getDirection();
+	void setDirection(char dir);
   private:
+	char direction;
+	int posistionArraySize;
 	int SIZE = 8;
 	void verifyPosition();
-	int* coordinates;
     int score;
 	int* pos;
-	struct Position* position;
+	// struct Position* position;
 };
 
 struct Position {
@@ -39,10 +41,10 @@ public:
 		this->X = posX;
 		this->Y = posY;
 	}
-	void incPosition(int incX, int incY) {
-		this->X += incX;
-		this->Y += incY;
-	}
+	// void incPosition(int incX, int incY) {
+	// 	this->X += incX;
+	// 	this->Y += incY;
+	// }
 };
 
 #endif

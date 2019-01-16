@@ -41,19 +41,34 @@ void InputManager::checkJoystickInput() {
 
 	int incX = 0;
 	int incY = 0;
-
+	
+	char direction = this->player->getDirection();
+	
 	if(Xaxis >= this->joystickVars->centerJoystickValue * (1.0 + this->joystickVars->deadZone)) {
-		incX = -speed;
+		if(direction != 'W') {
+			incX = -speed;
+			direction = 'W';
+		}
 	} else if(Xaxis <= this->joystickVars->centerJoystickValue * this->joystickVars->deadZone) {
-		incX = speed;
+		if(direction != 'E') {
+			incX = speed;
+			direction = 'E';
+		}
 	}
 	
 	if(Yaxis >= this->joystickVars->centerJoystickValue * (1.0 + this->joystickVars->deadZone)) {
-		incY = -speed;
+		if(direction != 'S') {
+			incY = -speed;
+			direction = 'S';
+		}
 	} else if(Yaxis <= this->joystickVars->centerJoystickValue * this->joystickVars->deadZone) {
-		incY = speed;
+		if(direction != 'N') {
+			incY = speed;
+			direction = 'N';
+		}
 	}
-
+		
+	this->player->setDirection(direction);
 	this->player->incPosition(incX, incY);
 }
 
