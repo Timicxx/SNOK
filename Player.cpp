@@ -1,17 +1,16 @@
 #include "Player.h"
 
-Player::Player(int* pos) {
+Player::Player() {
 	this->score = 0;
 	// this->position = new struct Position;
-	this->positions = { new struct Position };
-	this->posistionArraySize = 1;
-	if (pos != nullptr) {
-		this->position->setPosition(pos[0], pos[1]);
+	this->positions = new byte[64];
+	this->positions[0] = 4;
+	this->positions[1] = 4;
+	this->positions[2] = 4;
+	this->positions[3] = 4;
+	for (int i = 2; i < 64; i++) {
+		this->positions[i] = 255;
 	}
-}
-
-void Player::setSize(int size) {
-	this->SIZE = size;
 }
 
 int Player::getScore() {
@@ -30,34 +29,38 @@ void Player::setScore(int score) {
 // 	return this->position->Y;
 // }
 
-int Player::getPositionArraySize() {
-	return this->posistionArraySize;
+void Player::getPosition(byte* positionArray) {
+	positionArray = this->positions;
 }
 
-void Player::getPosition(int* positionArray) {
-	for(int i = 0; i < this->posistionArraySize); i++) {
-		positionArray[i] = this->positions.X;
-		positionArray[i + 1] = this->positions.Y;
-	}
-}
-
-void Player::setPosition(int posX, int posY) {
+void Player::setPosition(byte posX, byte posY) {
 	// this->position->setPosition(posX, posY);
-	int newPosition[this->posistionArraySize];
-	for(int i = 0; i < this->posistionArraySize - 1; i++) {
+	byte newPosition[64];
+	for(int i = 0; i < 64; i += 2) {
 		if(i == 0) {
-			newPosition[0] = new struct Position;
-			newPosition[0].setPosition(posX, posY);
+			newPosition[i] = posX;
+			newPosition[i + 1] = posY;
+			continue;
 		}
-		newPosition[i - 1] = this->positions[i];
+
+		byte x = this->positions[i - 1];
+		byte y = this->positions[i];
+
+		if(this->positions[i] == 255) {
+			x = 255;
+			y = 255;
+		}
+
+		newPosition[i + 1] = x;
+		newPosition[i + 2] = y;
 	}
 	this->positions = newPosition;
 	this->verifyPosition();
 }
 
-void Player::incPosition(int incX, int incY) {
-	int newX = this->positions[0]->X;
-	int newY = this->positions[0]->Y;
+void Player::incPosition(byte incX, byte incY) {
+	byte newX = this->positions[0] + incX;
+	byte newY = this->positions[1] + incY;
 	
 	// this->position->incPosition(posX, posY);
 	this->setPosition(newX, newY);
@@ -67,13 +70,11 @@ void Player::incPosition(int incX, int incY) {
 void Player::verifyPosition() {
 	// int _X = this->position->X;
 	// int _Y = this->position->Y;
-	int _X = this->positions[0]->X;
-	int _Y = this->positions[0]->Y;
+	byte _X = this->positions[0];
+	byte _Y = this->positions[1];
 	
-	int newX = _X;
-	int newY = _Y;
-	
-	this->posistionArraySize = (sizeof(this->positions) / sizeof(int);
+	byte newX = _X;
+	byte newY = _Y;
 	
 	if (_X > this->SIZE) {
 		newX = 0;
@@ -89,7 +90,7 @@ void Player::verifyPosition() {
 		newY = this->SIZE;
 	}
 
-	this->position->setPosition(newX, newY);
+	this->setPosition(newX, newY);
 }
 
 char Player::getDirection() {

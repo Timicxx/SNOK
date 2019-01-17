@@ -11,40 +11,37 @@
 
 class Player {
   public:
-	Player(int* pos);
+	Player();
     int getScore();
     void setScore(int score);
-	void setSize(int size);
 	// int getPositionX();
 	// int getPositionY();
-	int getPositionArraySize();
-	void getPosition(int* positionArray);
-	void setPosition(int posX, int posY);
-	void incPosition(int incX, int incY);
+	void getPosition(byte* positionArray);
+	void setPosition(byte posX, byte posY);
+	void incPosition(byte incX, byte incY);
 	char getDirection();
 	void setDirection(char dir);
   private:
 	char direction;
-	int posistionArraySize;
-	int SIZE = 8;
+	static const byte SIZE = 8;
 	void verifyPosition();
     int score;
-	int* pos;
 	// struct Position* position;
+	byte* positions;
 };
 
-struct Position {
-public:
-	int X = 4;
-	int Y = 4;
-	void setPosition(int posX, int posY) {
-		this->X = posX;
-		this->Y = posY;
-	}
-	// void incPosition(int incX, int incY) {
-	// 	this->X += incX;
-	// 	this->Y += incY;
-	// }
-};
+// struct Position {
+// public:
+// 	int X = 4;
+// 	int Y = 4;
+// 	void setPosition(int posX, int posY) {
+// 		this->X = posX;
+// 		this->Y = posY;
+// 	}
+//  void incPosition(int incX, int incY) {
+// 		this->X += incX;
+// 		this->Y += incY;
+// 	}
+// };
 
 #endif

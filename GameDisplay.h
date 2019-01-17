@@ -15,7 +15,6 @@ class GameDisplay {
   public:
 	  GameDisplay(int intensity);
 	  void setIntensity(int intensity);
-	  int getSize();
 	  int getAddress();
 	  LedControl* getLedControl();
   private:

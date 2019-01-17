@@ -15,10 +15,6 @@ void GameDisplay::init(int intensity) {
 	this->ledControl.clearDisplay(this->DISPLAY_ADDR);
 }
 
-int GameDisplay::getSize() {
-	return this->SIZE;
-}
-
 LedControl* GameDisplay::getLedControl() {
 	LedControl* lc = &this->ledControl;
 	return lc;

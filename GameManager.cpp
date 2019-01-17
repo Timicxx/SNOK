@@ -1,13 +1,12 @@
 #include "GameManager.h"
 
-GameManager::GameManager(int intensity, int* pos) 
-	: gameDisplay(intensity), player(pos), inputManager(&this->player) {
+GameManager::GameManager(int intensity)
+	: gameDisplay(intensity), player(), inputManager(&this->player) {
 }
 
 void GameManager::Setup() {
 	this->m_isPlaying = false;
 	this->inputManager.Setup();
-	this->player.setSize(this->gameDisplay.getSize());
 	Serial.begin(9600);
 }
 
@@ -16,11 +15,15 @@ void GameManager::Draw() {
 	// int _X = this->player.getPositionX();
 	// int _Y = this->player.getPositionY();
 	
-	int positionArray[this->player.getPositionArraySize()];
-	this->getPosition(positionArray);
-	
+	byte positionArray[64];
+	this->player.getPosition(positionArray);
+
 	this->gameDisplay.getLedControl()->clearDisplay(displayAddress);
-	for(int i = 0; i < sizeof(positionArray) / sizeof(int); i += 2) {
+	for(int i = 0; i < 64; i += 2) {
+		// Serial.println(positionArray[i]);
+		if (positionArray[i] == 255) {
+			break;
+		}
 		this->gameDisplay.getLedControl()->setLed(displayAddress, positionArray[i], positionArray[i + 1], true);
 	}
 	// this->gameDisplay.getLedControl()->setLed(displayAddress, _X, _Y, true);

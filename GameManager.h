@@ -16,7 +16,7 @@
 
 class GameManager {
   public:
-	  GameManager(int intensity=15, int* pos=nullptr);
+	  GameManager(int intensity=15);
 	  void Setup();
 	  void Draw();
 	  bool isPlaying();
