@@ -3,11 +3,13 @@
 Player::Player() {
 	this->score = 0;
 	// this->position = new struct Position;
+	initializePositionsArray();
+}
+
+void Player::initializePositionsArray() {
 	this->positions = new byte[64];
 	this->positions[0] = 4;
-	this->positions[1] = 4;
-	this->positions[2] = 4;
-	this->positions[3] = 4;
+	this->positions[1] = 4;	
 	for (int i = 2; i < 64; i++) {
 		this->positions[i] = 255;
 	}
@@ -36,23 +38,21 @@ void Player::getPosition(byte* positionArray) {
 void Player::setPosition(byte posX, byte posY) {
 	// this->position->setPosition(posX, posY);
 	byte newPosition[64];
-	for(int i = 0; i < 64; i += 2) {
-		if(i == 0) {
-			newPosition[i] = posX;
-			newPosition[i + 1] = posY;
-			continue;
-		}
+	
+	newPosition[0] = posX;
+	newPosition[1] = posY;
+	
+	for(int i = 2; i < 64; i += 2) {
+		byte x = this->positions[i - 2];
+		byte y = this->positions[i - 1];
 
-		byte x = this->positions[i - 1];
-		byte y = this->positions[i];
-
-		if(this->positions[i] == 255) {
+		if(this->positions[i - 2] == 255) {
 			x = 255;
 			y = 255;
 		}
 
-		newPosition[i + 1] = x;
-		newPosition[i + 2] = y;
+		newPosition[i] = x;
+		newPosition[i + 1] = y;
 	}
 	this->positions = newPosition;
 	this->verifyPosition();

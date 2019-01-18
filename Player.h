@@ -25,6 +25,7 @@ class Player {
 	char direction;
 	static const byte SIZE = 8;
 	void verifyPosition();
+	void initializePositionsArray();
     int score;
 	// struct Position* position;
 	byte* positions;
